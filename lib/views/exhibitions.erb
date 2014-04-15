@@ -1,31 +1,51 @@
 <%= erb(:header, :layout => false) %>
 <div class="container">
 
-<% gallery = ArtsGalleryApi::Gallery.new %>
+  <% gallery = ArtsGalleryApi::Gallery.new %>
 
-<h1>List of Exhibitions</h1>
+  <h1>List of Exhibitions</h1>
 
-<% gallery.all["galleries"].each do |gallery_hash| %>
+  <% gallery.all["galleries"].each do |gallery_hash| %>
   <% gallery_number = gallery_hash['id'] %>
   <% gallery.get_gallery_exhibitions(gallery_number)["exhibitions"].each do |exhibition_hash| %>
-      <% exhibition_number = exhibition_hash["id"] %>
-      <% data = gallery.get_exhibition(exhibition_number) %>
-      <strong>On at the <%= data['gallery_name']%></strong>
-      <br>
-      Name: <%= data['name']%>
-      <br>
-      Description: <%= data['description']%>
-      <br>
-      Price: <%= data['entry_fee']%>
-      <br>
-      Open from <%= data['opens_on']%> to <%= data['closes_on']%>
-      <br>
-      Opening hours: <%= gallery.retrieve_a_gallery(gallery_number)["opening_hour"] %>:00 To <%= gallery.retrieve_a_gallery(gallery_number)["closing_hour"] %>:00
-       <br>
-       
-      <a class="btn btn-primary" href="/exhibitions/<%= exhibition_number %>/ticket_form" role="button">Buy Ticket</a>
-      <hr>
+  <% exhibition_number = exhibition_hash["id"] %>
+  <% data = gallery.get_exhibition(exhibition_number) %>
+  <strong>On at the <%= data['gallery_name']%></strong>
+  <br>
+  Name: <%= data['name']%>
+  <br>
+  Description: <%= data['description']%>
+  <br>
+  Price: <%= data['entry_fee']%>
+  <br>
+  Open from <%= data['opens_on']%> to <%= data['closes_on']%>
+  <br>
+  Opening hours: <%= gallery.retrieve_a_gallery(gallery_number)["opening_hour"] %>:00 To <%= gallery.retrieve_a_gallery(gallery_number)["closing_hour"] %>:00
+  <br>
+
+
+
+  <!-- Small modal -->
+  <button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Buy Ticket</button>
+
+  <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+
+        <h2>Buy ticket for <%= data['name']%></h2>
+        <form action="ticket">
+          <p>Name: <input type="text" name="name"></p><br>
+          <p>Time: <input type="text" name="time"></p><br>
+          <h6>Please be aware only open: <%= gallery.retrieve_a_gallery(gallery_number)["opening_hour"] %>:00 To <%= gallery.retrieve_a_gallery(gallery_number)["closing_hour"] %>:00</h6>
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <hr>
   <% end %>
-<% end %>
+  <% end %>
 
 </div>
+<%= erb(:footer, :layout => false) %>

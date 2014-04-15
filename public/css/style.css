@@ -1,15 +1,27 @@
 * {
-  font-family: 'PT Sans Narrow', sans-serif;
+	font-family: 'PT Sans Narrow', sans-serif;
 }
 
 body {
-  font-size: 18px;
+	font-size: 20px;
+	background-image:url('/img/congruent_outline.png');
 }
 
 
-
 h1 {
-  font-family: 'Oswald', sans-serif;
-  color: blue;
-  
+	font-family: 'Oswald', sans-serif;
+	color: blue;
+}
+
+.container {
+	color: #e8e9e9;
+}
+
+.container p {
+	margin: 0 0 0 0;
+}
+
+.modal-content {
+	color: #444;
+	padding: 10px
 }
