@@ -1,0 +1,31 @@
+<%= erb(:header, :layout => false) %>
+<div class="container">
+
+<% gallery = ArtsGalleryApi::Gallery.new %>
+
+<h1>List of Exhibitions</h1>
+
+<% gallery.all["galleries"].each do |gallery_hash| %>
+  <% gallery_number = gallery_hash['id'] %>
+  <% gallery.get_gallery_exhibitions(gallery_number)["exhibitions"].each do |exhibition_hash| %>
+      <% exhibition_number = exhibition_hash["id"] %>
+      <% data = gallery.get_exhibition(exhibition_number) %>
+      <strong>On at the <%= data['gallery_name']%></strong>
+      <br>
+      Name: <%= data['name']%>
+      <br>
+      Description: <%= data['description']%>
+      <br>
+      Price: <%= data['entry_fee']%>
+      <br>
+      Open from <%= data['opens_on']%> to <%= data['closes_on']%>
+      <br>
+      Opening hours: <%= gallery.retrieve_a_gallery(gallery_number)["opening_hour"] %>:00 To <%= gallery.retrieve_a_gallery(gallery_number)["closing_hour"] %>:00
+       <br>
+       
+      <a class="btn btn-primary" href="/tickets" role="button">Buy Ticket</a>
+      <hr>
+  <% end %>
+<% end %>
+
+</div>

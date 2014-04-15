@@ -1,0 +1,24 @@
+<%= erb(:header, :layout => false) %>
+<div class="container">
+
+<% gallery = ArtsGalleryApi::Gallery.new %>
+
+
+<h1>List of Galleries</h1>
+
+<% gallery.all["galleries"].each do |gallery_hash| %>
+<% gallery_number = gallery_hash['id'] %>
+<% data = gallery.retrieve_a_gallery(gallery_number)%>
+
+<h4><%= data["name"] %></h4>
+<h5><%= data["description"] %></h5>
+<p>Address: <%= data["address"] %></p>
+<p>Open from <em><%= data['opening_hour']%>:00 to <%= data['closing_hour']%>:00</em></p>
+<hr>
+<% end %>
+
+
+</div>
+
+
+
