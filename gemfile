@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'arts_gallery_api', git: 'https://github.com/shabankarumba/arts_gallery_api'
 gem 'sinatra'
 gem 'shotgun'
+gem 'pry'
 
 group :test, :development do 
   gem 'rspec'

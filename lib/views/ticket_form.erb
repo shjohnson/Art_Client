@@ -1,9 +1,22 @@
 <%= erb(:header, :layout => false) %>
+<div class="container">
+  <% gallery = ArtsGalleryApi::Gallery.new %>
 
-<% @gallery = ArtsGalleryApi::Gallery.new %>
+  <% data = gallery.get_exhibition(:exhibition_id) %>
+  <h2>Buy ticket for <%= data['name']%></h2>
+  <form action="ticket">
+  <p>Params: <%= params["exhibition_id"] %></p>
 
-<form action="ticket.asp" method="get">
-  Name: <input type="text" name="fname"><br>
-  Time: <input type="text" name="time"><br>
-  <input type="submit" value="Submit">
-</form>
+  <input type="hidden" value= >
+  <input type="hidden" value=<% params[:gallery_number] %> >
+
+    Name: <input type="text" name="name"><br>
+    Time: <input type="text" name="time"><br>
+    <h6>Please be aware only open: <%= gallery.retrieve_a_gallery(:gallery_number)["opening_hour"] %>:00 To <%= gallery.retrieve_a_gallery(:gallery_number)["closing_hour"] %>:00</h6>
+    <input type="submit" value="Submit">
+  </form>
+
+</div>
+
+<!-- ticket.create_ticket(name, 2, '23/5/2014 10:00' ) -->
+

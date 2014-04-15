@@ -23,7 +23,7 @@
       Opening hours: <%= gallery.retrieve_a_gallery(gallery_number)["opening_hour"] %>:00 To <%= gallery.retrieve_a_gallery(gallery_number)["closing_hour"] %>:00
        <br>
        
-      <a class="btn btn-primary" href="/tickets" role="button">Buy Ticket</a>
+      <a class="btn btn-primary" href="/exhibitions/<%= exhibition_number %>/ticket_form" role="button">Buy Ticket</a>
       <hr>
   <% end %>
 <% end %>
