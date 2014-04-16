@@ -1,0 +1,26 @@
+<%= erb(:header, :layout => false) %>
+
+<div class='container'>
+  <p><%= @galleries %></p>
+
+  <h1><%= @galleries[0]["name"] %></h1>
+
+
+  <div class='col-md-6'>
+    <p> INFO HERE</p>
+  </div>
+
+  <div class='col-md-6 gallery'>
+    <img src='/img/galleries/hayward_gallery.jpg'/>
+  </div>
+
+  <hr>
+
+  <h2>Exhibitions</h2>
+
+  <p>List of exhibition info</p>
+
+</div>
+
+
+<%= erb(:footer, :layout => false) %>
