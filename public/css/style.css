@@ -29,6 +29,10 @@ h1 {
 .gallery {
   text-align: center;
 }
+.gallery:last-child
+{
+margin-bottom: 50px;
+}
 
 .info {
   background:#e8e9e9; 

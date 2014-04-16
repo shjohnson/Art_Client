@@ -2,14 +2,14 @@
 
 <div class='container'>
 
-  <h1><%= @galleries[@id]['name'] %></h1>
+  <h1><%= @gallery['name'] %></h1>
 
   <div class='col-md-6 info'> 
-    <p><%= @galleries[@id]["description"] %>
+    <p><%= @gallery["description"] %>
       <br>
-      Address: <em><%= @galleries[@id]["address"] %></em>
+      Address: <em><%= @gallery["address"] %></em>
       <br>
-      Opening hours: <%= @galleries[@id]["opening_hour"] %>:00 To <%= @galleries[@id]["closing_hour"] %>:00</p>
+      Opening hours: <%= @gallery["opening_hour"] %>:00 To <%= @gallery["closing_hour"] %>:00</p>
       
     </div>
 
@@ -20,22 +20,21 @@
 
     <h2>Exhibitions</h2>
     
+    <% if @exhibitions.empty? %>
+      <p>Im sorry there are currently none available</p>
+    <% else %>
+      <%  @exhibitions.each do |exhibition| %>
+      
+      <h3><%= exhibition['name']%></h3>
 
-    <%  @exhibition_details.each do |exhibition| %>
-    <% exhibition_number = exhibition["id"] %>
-    <% exhibition_info = @gallery.get_exhibition(exhibition_number) %>
-    
-    <h3><%= exhibition_info['name']%></h3>
-
-    <p>Description: <%= exhibition_info['description']%>
-    <br>
-    Price: <%= exhibition_info['entry_fee']%></p>
-    <hr>
+      <p>Description: <%= exhibition['description']%>
+      <br>
+      Price: <%= exhibition['entry_fee']%></p>
+      <hr>
+      <% end %>
     <% end %>
 
-    <% if @exhibition_details == [] %>
-    <p>Im sorry there are currently none available</p>
-    <% end %>
+
   </div>
 
 

@@ -6,13 +6,13 @@
   <hr>  
   
 
-  <% @gallery_index.each do |gallery_info| %>
+  <% gallery_index.each do |gallery_info| %>
   <% gallery_id = gallery_info['id'] %>
   
   <div class="col-md-6 gallery">
     <a href='/gallery_view/<%= gallery_id %>' >
       <h2><%= gallery_info['name'] %></h2>
-      <img src='/img/galleries/gallery_<%= gallery_info['id'] %>.jpg' />
+      <img src='/img/galleries/gallery_<%= gallery_id %>.jpg' />
     </a>
   </div>
   
