@@ -7,9 +7,13 @@
 
   <% gallery.all["galleries"].each do |gallery_hash| %>
   <% gallery_number = gallery_hash['id'] %>
+
   <% gallery.get_gallery_exhibitions(gallery_number)["exhibitions"].each do |exhibition_hash| %>
+  
   <% exhibition_number = exhibition_hash["id"] %>
+  
   <% data = gallery.get_exhibition(exhibition_number) %>
+  
   <strong>On at the <%= data['gallery_name']%></strong>
   <br>
   Name: <%= data['name']%>

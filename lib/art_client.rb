@@ -7,11 +7,8 @@ class ArtClient < Sinatra::Base
 
 
   get '/' do
-    gallery = ArtsGalleryApi::Gallery.new 
-    gallery.all["galleries"].each do |gallery_hash| 
-    gallery_number = gallery_hash['id'] 
-    data = gallery.retrieve_a_gallery(gallery_number)
-    end 
+    gallery = ArtsGalleryApi::Gallery.new
+    @gallery_index = gallery.all["galleries"]
     erb :index
   end
 
@@ -24,10 +21,18 @@ class ArtClient < Sinatra::Base
     erb :exhibitions
   end
 
-  get '/gallery_view' do
-    gallery = ArtsGalleryApi::Gallery.new 
-    @galleries = gallery.all["galleries"]
-    # gallery_name = 
+  get '/gallery_view/:gallery_id' do
+    params[:gallery_id]
+    @id =(params[:gallery_id].to_i - 1)
+    @gallery = ArtsGalleryApi::Gallery.new
+    gallery_index = @gallery.all["galleries"]
+    @galleries = gallery_index.collect do |data_hash|
+      id = data_hash["id"]
+      @gallery.retrieve_a_gallery(id)
+    end
+
+    @exhibition_details= @gallery.get_gallery_exhibitions(params[:gallery_id])["exhibitions"]
+
     erb :gallery_view
   end
 

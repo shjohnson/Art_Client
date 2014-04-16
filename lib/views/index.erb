@@ -3,56 +3,20 @@
 <div class="container">
 
   <h1>Galleries</h1>
-  <hr>
+  <hr>  
+  
 
+  <% @gallery_index.each do |gallery_info| %>
+  <% gallery_id = gallery_info['id'] %>
+  
   <div class="col-md-6 gallery">
-    <a href='/gallery_view' >
-      <h2>Hayward Gallery</h2>
-      <img src='/img/galleries/hayward_gallery.jpg' />
+    <a href='/gallery_view/<%= gallery_id %>' >
+      <h2><%= gallery_info['name'] %></h2>
+      <img src='/img/galleries/gallery_<%= gallery_info['id'] %>.jpg' />
     </a>
   </div>
-
-  <div class="col-md-6 gallery">
-    <a href=''>
-      <h2>People's Portrait Gallery</h2>
-      <img src='/img/galleries/potrait_gallery.jpg' />
-    </a>
-  </div>
-
-  <div class="col-md-6 gallery">
-    <a href=''>
-      <h2>Gallery of 21st Century Art</h2>
-      <img src='/img/galleries/21st_century.jpg' />
-    </a>
-  </div>
-
-  <div class="col-md-6 gallery">
-    <a href=''>
-      <h2>Whitechapel Gallery</h2>
-      <img src='/img/galleries/whitechapel-gallery.jpg' />
-    </a>
-  </div>
-
-  <div class="col-md-6 gallery">
-    <a href=''>
-      <h2>St Pancras Crypts</h2>
-      <img src='/img/galleries/crypt_gallery.jpeg' />
-    </a>
-  </div>
-
-  <div class="col-md-6 gallery">
-    <a href=''>
-      <h2>Viktor Wynd Fine Art</h2>
-      <img src='/img/galleries/viktor_fine_art.jpg' />
-    </a>
-  </div>
-
-
-
-  <a href="/galleries">Galleries</a>
-  <br>
-  <hr>
-  <a href="/exhibitions">Exhibitions</a>
+  
+  <% end %>
 
 </div>
 
