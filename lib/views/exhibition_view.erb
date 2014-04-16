@@ -1,0 +1,41 @@
+<%= erb(:header, :layout => false) %>
+
+<div class='container'>
+
+  <h1><%= @gallery['name'] %></h1>
+
+  <div class='col-md-6 info'> 
+    <p><%= @gallery["description"] %>
+      <br>
+      Address: <em><%= @gallery["address"] %></em>
+      <br>
+      Opening hours: <%= @gallery["opening_hour"] %>:00 To <%= @gallery["closing_hour"] %>:00</p>
+      
+    </div>
+
+    <div class='col-md-6 gallery'>
+      <img src='/img/galleries/gallery_<%= params['gallery_id'] %>.jpg'/>
+    </div>
+
+
+    <h2>Exhibitions</h2>
+    
+    <% if @exhibitions.empty? %>
+      <p>Im sorry there are currently none available</p>
+    <% else %>
+      <%  @exhibitions.each do |exhibition| %>
+      
+      <h3><%= exhibition['name']%></h3>
+
+      <p>Description: <%= exhibition['description']%>
+      <br>
+      Price: <%= exhibition['entry_fee']%></p>
+      <hr>
+      <% end %>
+    <% end %>
+
+
+  </div>
+
+
+  <%= erb(:footer, :layout => false) %>

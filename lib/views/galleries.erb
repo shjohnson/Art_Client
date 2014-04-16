@@ -1,16 +1,22 @@
 <%= erb(:header, :layout => false) %>
 <div class="container">
 
+  <h1>List of Galleries</h1>
+  
+  <% gallery_index.each do |gallery_hash| %>
+  <% gallery_number = gallery_hash['id'] %>
+  <% @gallery = @connector.retrieve_a_gallery(gallery_number) %>
 
-
-
-<h1>List of Galleries</h1>
-
-<h4><%= @gallery["name"] %></h4>
-<h5><%= @gallery["description"] %></h5>
-<p>Address: <%= @gallery["address"] %></p>
-<p>Open from <em><%= @gallery['opening_hour']%>:00 to <%= @gallery['closing_hour']%>:00</em></p>
-<hr>
+  <a href="/gallery_view/<%= @gallery['id'] %>">
+    <div class="gallery-info">
+      <h3><%= @gallery["name"] %></h3>
+      <p><%= @gallery["description"] %></p>
+      <p>Address: <%= @gallery["address"] %></p>
+      <p>Open from <em><%= @gallery['opening_hour']%>:00 to <%= @gallery ['closing_hour']%>:00</em></p>
+    </div>
+  </a>
+  
+  <% end %>
 
 
 </div>
