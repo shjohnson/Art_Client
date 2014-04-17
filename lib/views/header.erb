@@ -45,22 +45,19 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Exhibitions <b class="caret"></b></a>
               <ul class="dropdown-menu">
 
-                <% gallery_index.each do |gallery| %>
+                <%# #gallery_index.each do |gallery| %>
                 <li>
-                  <a href="/gallery_view/<%= gallery['id'] %>">
-                  <% gallery_number = gallery['id'] %>
-                    <% connector.get_gallery_exhibitions(gallery_number)["exhibitions"].each do |exhibition_hash| %>
+                  <a href="/gallery_view/<%#= gallery['id'] %>">
+                  <%# #gallery_number = gallery['id'] %>
+                    <%# connector.get_gallery_exhibitions(gallery_number)["exhibitions"].each do |exhibition_hash| %>
 
-                    <% exhibition_number = exhibition_hash["id"] %>
 
-                    <% data = connector.get_exhibition(exhibition_number) %>
-
-                     <%= data['gallery_name']%>
+                     <%#= exhibition_hash['gallery_name']%>
                      
-                     <% end %>
+                     <%# end %>
                   </a>
                 </li>
-                <% end %>
+                <%# end %>
 
               </ul>
             </li>

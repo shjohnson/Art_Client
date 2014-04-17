@@ -1,0 +1,15 @@
+<%= erb(:header, :layout => false) %>
+<div class='container'>
+
+  <div class="col-md-4">
+  <h1>Ticket confirmation</h1>
+
+  <div class="gallery-info">
+    <h3> Thanks: <%= params[:name] %></h3>
+    <p>Here is your ticket:
+    Confirm:
+    <%= params[:name] %> is going at <%=params[:date]%> <%=params[:time]%> </p>
+  </div>
+  </div>
+</div>
+<%= erb(:footer, :layout => false) %>

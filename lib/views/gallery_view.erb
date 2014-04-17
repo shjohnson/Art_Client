@@ -22,18 +22,19 @@
     
     <% if @exhibitions.empty? %>
       <p>Im sorry there are currently none available</p>
+    
     <% else %>
+
       <%  @exhibitions.each do |exhibition| %>
-      
-      <h3><%= exhibition['name']%></h3>
-
-      <p>Description: <%= exhibition['description']%>
-      <br>
-      Price: <%= exhibition['entry_fee']%></p>
-      <hr>
+        <h3><%= exhibition['name']%></h3>
+        <p>Description: <%= exhibition['description']%></p>
+        <br>
+        <p>Price: <%= exhibition['entry_fee']%></p>
+        <a href="/exhibitions/<%= exhibition['id']%>/ticket_form/<%= @gallery['id'] %>"><button type="button" class="btn btn-success">Buy Ticket</button></a>
+        <hr>
       <% end %>
-    <% end %>
 
+    <% end %>
 
   </div>
 

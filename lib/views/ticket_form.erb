@@ -1,22 +1,39 @@
 <%= erb(:header, :layout => false) %>
+
 <div class="container">
-  <% gallery = ArtsGalleryApi::Gallery.new %>
+  
+  <div class="col-md-4">
 
-  <% data = gallery.get_exhibition(:exhibition_id) %>
-  <h2>Buy ticket for <%= data['name']%></h2>
-  <form action="ticket">
-  <p>Params: <%= params["exhibition_id"] %></p>
+  <h2>Buy ticket for <%= @gallery_name %></h2>
 
-  <input type="hidden" value= >
-  <input type="hidden" value=<% params[:gallery_number] %> >
+    <!-- ticket.create_ticket(name, 2, '23/5/2014 10:00' ) -->
 
-    Name: <input type="text" name="name"><br>
-    Time: <input type="text" name="time"><br>
-    <h6>Please be aware only open: <%= gallery.retrieve_a_gallery(:gallery_number)["opening_hour"] %>:00 To <%= gallery.retrieve_a_gallery(:gallery_number)["closing_hour"] %>:00</h6>
-    <input type="submit" value="Submit">
-  </form>
+    <form role="form" action="/ticket" method="post">
 
+      <div class="form-group">
+        <label for="name1">Name:</label>
+        <input type="text" class="form-control" id="name1" placeholder="Enter name" name="name">
+      </div>
+
+      <div class="form-group">
+        <label for="time1">Time:</label>
+        <input type="time" class="form-control" id="time1" name="time">
+      </div>
+
+      <div class="form-group">
+
+        <label for="date1">Date:</label>
+        <input type="text" id="date1" name="date">
+        <h5 class="help-block">Please be aware only open: <%= @opens %>:00 To <%= @closes %>:00</h5>
+
+        <input type="hidden" value="<%= params['exhibition_id'] %>" name="id" >
+      </div>
+
+      <!-- ticket.create_ticket(name, 2, '23/5/2014 10:00' ) -->
+
+      <input type="submit" value="Submit" class="btn btn-default">
+
+    </form>
+  </div>
 </div>
 <%= erb(:footer, :layout => false) %>
-<!-- ticket.create_ticket(name, 2, '23/5/2014 10:00' ) -->
-
